@@ -32,7 +32,7 @@
                 <tbody>
                     @foreach($bookables as $bookable)
                     <tr>
-                        <td><a href="{{ route('bookables.admin.edit', $bookable->id) }}">{{ $bookable->title }}</a></td>
+                        <td><a href="{{ route('bookables.admin.show', $bookable->id) }}">{{ $bookable->title }}</a></td>
                         <td>{{ $bookable->slug }}</td>
                         <td>
                             <a href="{{ route('bookables.admin.edit', $bookable->id) }}" class="btn btn-info">Edit</a>

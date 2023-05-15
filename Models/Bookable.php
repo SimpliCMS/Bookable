@@ -7,17 +7,21 @@ use Illuminate\Database\Eloquent\Builder;
 use Modules\Bookable\Models\BookableState;
 use Modules\Bookable\Contracts\Bookable as BookableContract;
 use Konekt\Enum\Eloquent\CastsEnums;
+use Vanilo\Contracts\Buyable;
+use Vanilo\Support\Traits\BuyableModel;
+use Vanilo\Support\Traits\HasImagesFromMediaLibrary;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Bookable extends Model implements BookableContract, HasMedia {
+class Bookable extends Model implements BookableContract, Buyable, HasMedia {
 
+    use HasImagesFromMediaLibrary;
     use InteractsWithMedia;
-
-//    use CastsEnums;
+    use BuyableModel;
+    use CastsEnums;
     use Sluggable;
     use SluggableScopeHelpers;
 
@@ -39,7 +43,7 @@ class Bookable extends Model implements BookableContract, HasMedia {
         'original_price' => 'float',
     ];
     protected $enums = [
-        'state' => 'BookableState@enumClass'
+        'state' => 'BookableStateProxy@enumClass'
     ];
 
     public static function findBySku(string $sku) {

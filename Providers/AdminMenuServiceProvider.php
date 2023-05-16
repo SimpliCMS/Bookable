@@ -13,12 +13,15 @@ class AdminMenuServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-        // Add default menu items to sidebar
-        if ($adminMenu = Menu::get('admin')) {
+        $this->app->booted(function () {
+            // Add default menu items to sidebar
+            if ($adminMenu = Menu::get('admin')) {
 
-            $bookable = $adminMenu->addItem('bookable', __('Bookables'))->data('order', 11);
-            $bookable->addSubItem('services', __('Services'), '/admin/bookables')->activateOnUrls('admin/bookables/*');
-        }
+                $bookable = $adminMenu->addItem('bookable', __('Bookables'))->data('order', 11);
+                $bookable->addSubItem('services', __('Services'), ['route' => 'bookables.admin.index'])
+                        ->activateOnUrls($this->routeWildcard('bookables.admin.index'));
+            }
+        });
     }
 
     /**

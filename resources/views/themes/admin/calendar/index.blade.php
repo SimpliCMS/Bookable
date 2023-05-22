@@ -156,6 +156,7 @@ $(document).ready(function () {
                 // Form submitted successfully, reload the calendar
                 calendar.refetchEvents();
                  $("#eventModal").hide();
+                 displayMessage("Event Added Successfully");
             },
             error: function (xhr, status, error) {
                 // Handle error if form submission fails

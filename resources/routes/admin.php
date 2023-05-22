@@ -21,3 +21,8 @@ Route::group(['prefix' => 'bookables'], function () {
     Route::delete('{bookable}', 'BookableController@destroy')->name('bookables.admin.destroy');
     Route::get('{bookable}/edit', 'BookableController@edit')->name('bookables.admin.edit');
 });
+Route::group(['prefix' => 'calendar'], function () {
+ Route::get('/', 'CalendarController@index')->name('bookables.admin.calendar.index');
+ Route::post('/', 'CalendarController@store')->name('bookables.admin.calendar.store');
+ Route::post('/ajax', 'CalendarController@ajax')->name('bookables.admin.calendar.ajax');
+ });

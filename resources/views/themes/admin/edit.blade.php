@@ -9,7 +9,7 @@
 
     <div class="col-12 col-lg-8 col-xl-9">
         {!! Form::model($bookable, [
-                'route'  => ['bookables.admin.update', $bookable],
+                'route'  => ['bookable.admin.update', $bookable],
                 'method' => 'PUT'
             ])
         !!}

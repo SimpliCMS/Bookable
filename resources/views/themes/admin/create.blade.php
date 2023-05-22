@@ -5,7 +5,7 @@
 @stop
 @section('content')
 <div class="container-fluid">
-    <form action="{{ route('bookables.admin.store') }}" method="POST">
+    <form action="{{ route('bookable.admin.store') }}" method="POST">
         @csrf
         <div class="row g-3">
             <div class="col-md-9">

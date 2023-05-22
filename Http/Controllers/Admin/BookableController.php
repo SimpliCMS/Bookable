@@ -56,14 +56,14 @@ class BookableController extends Controller {
             } catch (\Exception $e) { // Here we already have the service created
                 flash()->error(__('Error: :msg', ['msg' => $e->getMessage()]));
 
-                return redirect()->route('bookables.admin.edit', ['bookable' => $bookable]);
+                return redirect()->route('bookable.admin.edit', ['bookable' => $bookable]);
             }
         } catch (\Exception $e) {
             flash()->error(__('Error: :msg', ['msg' => $e->getMessage()]));
 
             return redirect()->back()->withInput();
         }
-        return redirect()->route('bookables.admin.index');
+        return redirect()->route('bookable.admin.index');
     }
 
     /**
@@ -126,7 +126,7 @@ class BookableController extends Controller {
             return redirect()->back();
         }
 
-        return redirect(route('bookables.admin.index'));
+        return redirect(route('bookable.admin.index'));
     }
 
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 /*
   |--------------------------------------------------------------------------
   | Admin Web Routes
@@ -11,18 +10,17 @@
   | contains the "web" "auth" and "role" middleware groups to lock them to the Admin.
   |
  */
-Route::group(['prefix' => 'bookables'], function () {
-    // Menu routes
-    Route::get('/', 'BookableController@index')->name('bookables.admin.index');
-    Route::post('/', 'BookableController@store')->name('bookables.admin.store');
-    Route::get('create', 'BookableController@create')->name('bookables.admin.create');
-    Route::get('{bookable}', 'BookableController@show')->name('bookables.admin.show');
-    Route::put('{bookable}', 'BookableController@update')->name('bookables.admin.update');
-    Route::delete('{bookable}', 'BookableController@destroy')->name('bookables.admin.destroy');
-    Route::get('{bookable}/edit', 'BookableController@edit')->name('bookables.admin.edit');
+Route::group(['prefix' => 'bookable'], function () {
+    Route::group(['prefix' => 'calendar'], function () {
+        Route::get('/', 'CalendarController@index')->name('bookable.admin.calendar.index');
+        Route::post('/', 'CalendarController@store')->name('bookable.admin.calendar.store');
+        Route::post('/ajax', 'CalendarController@ajax')->name('bookable.admin.calendar.ajax');
+    });
+    Route::get('/', 'BookableController@index')->name('bookable.admin.index');
+    Route::post('/', 'BookableController@store')->name('bookable.admin.store');
+    Route::get('create', 'BookableController@create')->name('bookable.admin.create');
+    Route::get('{bookable}', 'BookableController@show')->name('bookable.admin.show');
+    Route::put('{bookable}', 'BookableController@update')->name('bookable.admin.update');
+    Route::delete('{bookable}', 'BookableController@destroy')->name('bookable.admin.destroy');
+    Route::get('{bookable}/edit', 'BookableController@edit')->name('bookable.admin.edit');
 });
-Route::group(['prefix' => 'calendar'], function () {
- Route::get('/', 'CalendarController@index')->name('bookables.admin.calendar.index');
- Route::post('/', 'CalendarController@store')->name('bookables.admin.calendar.store');
- Route::post('/ajax', 'CalendarController@ajax')->name('bookables.admin.calendar.ajax');
- });

@@ -18,10 +18,10 @@ class AdminMenuServiceProvider extends ServiceProvider {
             if ($adminMenu = Menu::get('admin')) {
 
                 $bookable = $adminMenu->addItem('bookable', __('Bookables'))->data('order', 11);
-                $bookable->addSubItem('calendar', __('Calendar'), ['route' => 'bookables.admin.calendar.index'])
-                        ->activateOnUrls($this->routeWildcard('bookables.admin.calendar.index'));
-                $bookable->addSubItem('services', __('Services'), ['route' => 'bookables.admin.index'])
-                        ->activateOnUrls($this->routeWildcard('bookables.admin.index'));
+                $bookable->addSubItem('calendar', __('Calendar'), ['route' => 'bookable.admin.calendar.index'])
+                        ->activateOnUrls($this->routeWildcard('bookable.admin.calendar.index'));
+                $bookable->addSubItem('services', __('Services'), ['route' => 'bookable.admin.index'])
+                        ->activateOnUrls($this->routeWildcard('bookable.admin.index'));
             }
         });
     }

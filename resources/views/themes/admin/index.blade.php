@@ -11,7 +11,7 @@
 
             <div class="card-actionbar">
                 <div class="btn-group">
-                    <a href="{{ route('bookables.admin.create') }}" class="btn btn-sm btn-outline-success">
+                    <a href="{{ route('bookable.admin.create') }}" class="btn btn-sm btn-outline-success">
                         <i class="zmdi zmdi-plus " ></i>
                         Create Service
                     </a>
@@ -32,11 +32,11 @@
                 <tbody>
                     @foreach($bookables as $bookable)
                     <tr>
-                        <td><a href="{{ route('bookables.admin.show', $bookable->id) }}">{{ $bookable->title }}</a></td>
+                        <td><a href="{{ route('bookable.admin.show', $bookable->id) }}">{{ $bookable->title }}</a></td>
                         <td>{{ $bookable->slug }}</td>
                         <td>
-                            <a href="{{ route('bookables.admin.edit', $bookable->id) }}" class="btn btn-info">Edit</a>
-                            <form action="{{ route('bookables.admin.destroy', $bookable->id) }}" method="POST" style="display:inline;">
+                            <a href="{{ route('bookable.admin.edit', $bookable->id) }}" class="btn btn-info">Edit</a>
+                            <form action="{{ route('bookable.admin.destroy', $bookable->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this page?')">Delete</button>

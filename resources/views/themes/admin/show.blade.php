@@ -70,11 +70,11 @@
     <div class="card mb-3">
         <div class="card-body">
             @can('edit products')
-            <a href="{{ route('bookables.admin.edit', $bookable) }}" class="btn btn-outline-primary">{{ __('Edit service') }}</a>
+            <a href="{{ route('bookable.admin.edit', $bookable) }}" class="btn btn-outline-primary">{{ __('Edit service') }}</a>
             @endcan
 
             @can('delete products')
-                {!! Form::open(['route' => ['bookables.admin.destroy', $bookable], 'method' => 'DELETE', 'class' => "float-right"]) !!}
+                {!! Form::open(['route' => ['bookable.admin.destroy', $bookable], 'method' => 'DELETE', 'class' => "float-right"]) !!}
                 <button class="btn btn-outline-danger">
                     {{ __('Delete product') }}
                 </button>

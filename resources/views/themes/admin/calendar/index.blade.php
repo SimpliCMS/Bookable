@@ -14,10 +14,11 @@
 <div class="container-fluid mb-5">
     <div id='calendar'></div>
 </div>
+
 <div id="eventModal" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" id="event-form" data-action="{{ route('bookables.admin.calendar.store') }}">
+            <form method="post" id="event-form" data-action="{{ route('bookable.admin.calendar.store') }}">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title">Event Title</h5>
@@ -79,12 +80,13 @@ $(document).ready(function () {
 
     var calendar = new FullCalendar.Calendar($('#calendar')[0], {
         plugins: ['interaction', 'dayGrid', 'timeGrid'],
+        navLinks: true,
         header: {
             left: 'dayGridMonth,timeGridWeek,timeGridDay',
             center: 'title'
         },
         editable: true,
-        events: "{{ route('bookables.api.calendar.index') }}",
+        events: "{{ route('bookable.api.calendar.index') }}",
         displayEventTime: true,
         eventRender: function (info) {
             if (info.event.allDay === 'true') {
@@ -106,7 +108,7 @@ $(document).ready(function () {
             var start = info.event.startStr;
             var end = info.event.endStr;
             $.ajax({
-                url: "{{ route('bookables.admin.calendar.ajax') }}",
+                url: "{{ route('bookable.admin.calendar.ajax') }}",
                 data: {
                     title: info.event.title,
                     start: start,
@@ -125,7 +127,7 @@ $(document).ready(function () {
             if (deleteMsg) {
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('bookables.admin.calendar.ajax') }}",
+                    url: "{{ route('bookable.admin.calendar.ajax') }}",
                     data: {
                         id: info.event.id,
                         type: 'delete'

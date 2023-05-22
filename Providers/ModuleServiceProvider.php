@@ -6,6 +6,7 @@ use Konekt\Concord\BaseModuleServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Modules\Bookable\Models\Bookable;
 use Modules\Bookable\Models\BookableState;
+use Modules\Bookable\Models\Calendar;
 use Modules\Bookable\Http\Requests\CreateBookable;
 use Modules\Bookable\Http\Requests\UpdateBookable;
 use Schema;
@@ -20,6 +21,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
     protected $modelNamespace = 'Modules\Bookable\Models';
     protected $models = [
         Bookable::class,
+        Calendar::class,
     ];
     protected $enums = [
         BookableState::class,

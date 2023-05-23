@@ -86,6 +86,10 @@ class Bookable extends Model implements BookableContract, Buyable, HasMedia {
         ];
     }
 
+    public static function findBySlug(string $slug) {
+        return static::where('slug', $slug)->first();
+    }
+
     public function registerMediaCollections(): void {
         $this
                 ->addMediaCollection('default')

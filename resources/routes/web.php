@@ -12,6 +12,6 @@
 */
 Route::prefix('bookable')->group(function () {
 Route::get('/', 'BookableController@index')->name('bookable.index');
-Route::get('{bookable}', 'BookableController@show')->name('bookable.show');
+Route::get('{slug}', 'BookableController@show')->name('bookable.show');
  Route::post('cart/add/{bookable}', 'BookableController@addCartItem')->name('bookable.cart.add');
 });    

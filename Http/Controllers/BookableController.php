@@ -26,7 +26,10 @@ class BookableController extends Controller {
      * @param int $id
      * @return Renderable
      */
-    public function show(Bookable $bookable) {
+    public function show(string $slug) {
+        if (!$bookable = BookableProxy::findBySlug($slug)) {
+            abort(404);
+        }
         return view('bookable::show', [
             'bookable' => $bookable
         ]);

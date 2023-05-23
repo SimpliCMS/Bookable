@@ -16,9 +16,9 @@ Bookable Services
                         @if ($bookable->is_active)
                         <div class="col-md-6 col-lg-4">
                             <div class="card bg-light mb-3">
-                                <a href="{{ route('bookable.show', $bookable->id) }}"><img src="{{ $bookable->getMedia('default')[0]->getUrl() }}" class="card-img-top" alt="..."></a>
+                                <a href="{{ route('bookable.show', $bookable->slug) }}"><img src="{{ $bookable->getMedia('default')[0]->getUrl() }}" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
-                                    <p class="card-text"><a href="{{ route('bookable.show', $bookable->id) }}">{{ Str::limit($bookable->name, 50) }}</a></p>
+                                    <p class="card-text"><a href="{{ route('bookable.show', $bookable->slug) }}">{{ Str::limit($bookable->name, 50) }}</a></p>
                                 </div>
                             </div>
                         </div>

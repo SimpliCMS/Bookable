@@ -4,36 +4,21 @@ namespace Modules\Bookable\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Vanilo\Cart\Facades\Cart;
 use Modules\Core\Http\Controllers\Controller;
+use Modules\Bookable\Models\BookableProxy;
+use Modules\Bookable\Models\Bookable as BookableModel;
+use Modules\Bookable\Contracts\Bookable;
 
-class BookableController extends Controller
-{
+class BookableController extends Controller {
+
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
-    {
-        return view('bookable::index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('bookable::create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
+    public function index() {
+        $bookables = BookableProxy::all();
+        return view('bookable::index', compact('bookables'));
     }
 
     /**
@@ -41,39 +26,19 @@ class BookableController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
-    {
-        return view('bookable::show');
+    public function show(Bookable $bookable) {
+        return view('bookable::show', [
+            'bookable' => $bookable
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('bookable::edit');
+    public function addCartItem(Bookable $bookable) {
+        Cart::addItem($bookable, 1, ['attributes' => [
+                'product_type' => 'Modules\Bookable\Models\Bookable'
+        ]]);
+        flash()->success($bookable->name . ' has been added to cart');
+
+        return redirect()->route('cart.show');
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

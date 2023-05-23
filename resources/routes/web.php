@@ -11,7 +11,7 @@
 |
 */
 Route::prefix('bookable')->group(function () {
-    Route::get('/', function () {
-        dd('This is the Bookable module index page. Build something great!');
-    });
+Route::get('/', 'BookableController@index')->name('bookable.index');
+Route::get('{bookable}', 'BookableController@show')->name('bookable.show');
+ Route::post('cart/add/{bookable}', 'BookableController@addCartItem')->name('bookable.cart.add');
 });    

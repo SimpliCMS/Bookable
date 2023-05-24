@@ -36,9 +36,7 @@ class BookableController extends Controller {
     }
 
     public function addCartItem(Bookable $bookable) {
-        Cart::addItem($bookable, 1, ['attributes' => [
-                'product_type' => 'Modules\Bookable\Models\Bookable'
-        ]]);
+        Cart::addItem($bookable);
         flash()->success($bookable->name . ' has been added to cart');
 
         return redirect()->route('cart.show');

@@ -4,6 +4,7 @@ namespace Modules\Bookable\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Modules\Bookable\Models\Bookable;
 use Modules\Bookable\Models\BookableState;
 use Modules\Bookable\Models\Calendar;
@@ -38,6 +39,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
      */
     public function boot() {
         parent::boot();
+        
         // Your module's boot logic here
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(BookableSettingsServiceProvider::class);

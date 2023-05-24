@@ -25,6 +25,7 @@ class Bookable extends Model implements BookableContract, Buyable, HasMedia {
     use Sluggable;
     use SluggableScopeHelpers;
 
+    protected $product_type = 'Modules\Bookable\Models\Bookable';
     protected $fillable = [
         'name',
         'slug',
@@ -45,6 +46,10 @@ class Bookable extends Model implements BookableContract, Buyable, HasMedia {
     protected $enums = [
         'state' => 'BookableStateProxy@enumClass'
     ];
+
+    public function morphTypeName(): string {
+        return static::class;
+    }
 
     public static function findBySku(string $sku) {
         return static::where('sku', $sku)->first();

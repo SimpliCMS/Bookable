@@ -4,7 +4,7 @@ namespace Modules\Bookable\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class BookablePreferencesProvider extends ServiceProvider
+class BookablePreferencesServiceProvider extends ServiceProvider
 {
     
     /**

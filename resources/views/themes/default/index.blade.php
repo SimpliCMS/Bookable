@@ -15,7 +15,7 @@ Bookable Services
                         @foreach($bookables->sortByDesc('created_at') as $bookable)
                         @if ($bookable->is_active)
                         <div class="col-md-6 col-lg-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card mb-3">
                                 <a href="{{ route('bookable.show', $bookable->slug) }}"><img src="{{ $bookable->getMedia('default')[0]->getUrl() }}" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
                                     <p class="card-text"><a href="{{ route('bookable.show', $bookable->slug) }}">{{ Str::limit($bookable->name, 50) }}</a></p>
